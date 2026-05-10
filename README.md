@@ -55,7 +55,9 @@ helm push bmw-helm-0.1.0.tgz oci://<account>.dkr.ecr.<region>.amazonaws.com/bmw-
 # Deploy to EKS
 
 ```
-helm install my-python-app \
+
+```
+helm install bmw-app \
 oci://<account>.dkr.ecr.<region>.amazonaws.com/bmw-helm \
 --version 0.1.0 \
 --namespace default \
