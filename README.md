@@ -64,9 +64,10 @@ oci://<account>.dkr.ecr.<region>.amazonaws.com/bmw-helm \
 
 # Verify
 
-kubectl get pods
+`kubectl get pods`
 
 # Create host entry to the ALB ingress controller
-
+```
 sudo echo ALB_IP  mybmw.pieterza.com' >> /etc/hosts
 curl http://ALB_IP
+```
