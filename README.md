@@ -4,7 +4,7 @@ Terraform to create:
 
 * VPC, pubic, private and Nat GW for egress.
 * EKS with self managed node group
-* ECR repo for our bmw-app helm chart
+* ECR repo for our bmw-app helm chart, and app
 * IAM roles, etc provided by the helper module.
 
 
@@ -17,14 +17,12 @@ terraform apply
 
 aws --profile $yourprofile eks update-kubeconfig --name bmw-eks
 kubectl get nodes
-
-Ingress via eks/aws-load-balancer-controller
+```
 
 We deploy the public helm chart like so after terraform apply:
 
-```
 #  We will use AWS-LOAD_BALANCER_CONTROLLER to spin up ALBs automatically based on resource annotiotion such as service/ingress.
-
+```
 helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=bmw-eks \
@@ -70,5 +68,5 @@ kubectl get pods
 
 # Create host entry to the ALB ingress controller
 
-sudo echo '127.0.0.1 mybmw.pieterza.com' >> /etc/hosts
-curl http://localhost
+sudo echo ALB_IP  mybmw.pieterza.com' >> /etc/hosts
+curl http://ALB_IP
