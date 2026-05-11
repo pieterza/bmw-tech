@@ -80,6 +80,6 @@ oci://<account>.dkr.ecr.<region>.amazonaws.com/bmw-helm \
 
 # Create host entry to the ALB ingress controller
 ```
-sudo echo ALB_IP  mybmw.pieterza.com' >> /etc/hosts
-curl http://ALB_IP
+sudo echo '$ALB_IP  mybmw.pieterza.com' >> /etc/hosts
+curl http://$ALB_IP
 ```
