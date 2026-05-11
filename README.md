@@ -1,4 +1,4 @@
-#  This is a little rought around the edges as I started late Sunday night (22:16 now, right before I push.  Happy to talk through it all though.
+#  This is a little rough around the edges as I started late Sunday night (22:16 now, right before I push.  Happy to talk through it all though.
 
 Terraform to create:
 
