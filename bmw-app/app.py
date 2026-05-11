@@ -24,16 +24,16 @@ def health():
 def consume_now():
     topic = request.args.get('topic', 'my-topic')
     max_messages = int(request.args.get('max', 10))
-    
+
     consumer = Consumer(kafka_config)
     consumer.subscribe([topic])
-    
+
     messages = []
     for _ in range(max_messages):
         msg = consumer.poll(timeout=2.0)
         if msg and not msg.error():
             messages.append(json.loads(msg.value().decode('utf-8')))
-    
+
     consumer.close()
     return jsonify(messages)
 
