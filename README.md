@@ -39,7 +39,17 @@ docker push <account>.dkr.ecr.<region>.amazonaws.com/bmw-app:0.1
 
 # Test it locally if you want
 docker run -p 8000:8000  <account>.dkr.ecr.<region>.amazonaws.com/bmw-app:0.1
-curl localhost:8000
+
+Mac ~ $ curl http://localhost:8000/consume
+^C
+Mac ~ $ curl http://localhost:8000
+<h1>Hello BMW from Flask on EKS!<h1><p>Development mode active.</p>Mac ~ $
+Mac ~ $ curl http://localhost:8000/health
+{"status":"ok"}
+Mac ~ $ curl http://localhost:8000/consume
+192.168.65.1 - - [11/May/2026 06:25:21] "GET /consume HTTP/1.1" 200 -
+%3|1778480723.192|FAIL|rdkafka#consumer-2| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+
 
 # Get login token and login to Helm registry
 aws ecr get-login-password --region <your-region> | \
