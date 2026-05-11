@@ -21,7 +21,7 @@ kubectl get nodes
 
 We deploy the public helm chart like so after terraform apply:
 
-#  We will use AWS-LOAD_BALANCER_CONTROLLER to spin up ALBs automatically based on resource annotiotion such as service/ingress.
+#  We will use AWS-LOAD_BALANCER_CONTROLLER to spin up ALBs automatically based on resource annotation such as service/ingress.
 ```
 helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
