@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request
 from confluent_kafka import Consumer
-import json
+import json,os
 
 app = Flask(__name__)
 
 kafka_config = {
-    'bootstrap.servers': 'localhost:9092',
+    'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092'),
     'group.id': 'flask-on-demand-consumer',
     'auto.offset.reset': 'latest',
     'enable.auto.commit': False,
